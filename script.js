@@ -1,4 +1,4 @@
-let a = true
-let b = false
+let happy = true
 
-console.log(a && b || a)
+
+console.log(!happy)
