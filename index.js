@@ -62,26 +62,26 @@ val = Array.isArray(numbers);
 val = numbers[0];
 
 //insert into arrays
-numbers[2] = 100
+numbers[2] = 100;
 //find index of value
-val = numbers.indexOf(132)
+val = numbers.indexOf(132);
 //mutating arrays
-numbers.push(250)
+numbers.push(250);
 //add to front
-numbers.unshift(120)
+numbers.unshift(120);
 //takeoff from the end
-numbers.pop()
+numbers.pop();
 //takeoff from the front
-numbers.shift()
+numbers.shift();
 //splice
-numbers.splice(1, 2)
+numbers.splice(1, 2);
 //reverse
-numbers.reverse()
+numbers.reverse();
 
 //concat array
-val = numbers.concat(numbers2)
+val = numbers.concat(numbers2);
 
 //sort
-val = fruit.sort()
+val = fruit.sort();
 // console.log(numbers)
 console.log(val);
