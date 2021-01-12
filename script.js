@@ -40,40 +40,81 @@
 // object prototype
 //person.prototype
 
-function Person(firstName, lastName, dob) {
-  this.firstName = firstName;
-  this.lastName = lastName;
-  this.birthday = new Date(dob);
-  //   this.calculateAge = function () {
-  //     const diff = Date.now() - this.birthday.getTime();
-  //     const ageDate = new Date(diff);
-  //     return Math.abs(ageDate.getUTCFullYear() - 1970);
-  //   };
-}
+// function Person(firstName, lastName, dob) {
+//   this.firstName = firstName;
+//   this.lastName = lastName;
+//   this.birthday = new Date(dob);
+//   this.calculateAge = function () {
+//     const diff = Date.now() - this.birthday.getTime();
+//     const ageDate = new Date(diff);
+//     return Math.abs(ageDate.getUTCFullYear() - 1970);
+//   };
+// }
 
 //calculate age
-Person.prototype.calculateAge = function () {
-  const diff = Date.now() - this.birthday.getTime();
-  const ageDate = new Date(diff);
-  return Math.abs(ageDate.getUTCFullYear() - 1970);
-};
+// Person.prototype.calculateAge = function () {
+//   const diff = Date.now() - this.birthday.getTime();
+//   const ageDate = new Date(diff);
+//   return Math.abs(ageDate.getUTCFullYear() - 1970);
+// };
 
-//get full name
+// //get full name
 
-Person.prototype.getFullName = function () {
-  return `${this.firstName} ${this.lastName}`;
-};
+// Person.prototype.getFullName = function () {
+//   return `${this.firstName} ${this.lastName}`;
+// };
 
-// gets married 
-Person.prototype.getsMarried = function(newLastName){
-  this.lastName = newLastName
+// gets married
+// Person.prototype.getsMarried = function(newLastName){
+//   this.lastName = newLastName
+// }
+
+// const john = new Person("john", "doe", "8-12-90");
+// const mary = new Person("mary", "jane", "9-8-2000");
+
+// console.log(mary.calculateAge());
+// console.log(mary.getFullName());
+
+// mary.getsMarried('smith')
+// console.log(mary.getFullName());
+
+function Person(firstName, lastName) {
+  this.firstName = firstName;
+  this.lastName = lastName;
 }
 
-const john = new Person("john", "doe", "8-12-90");
-const mary = new Person("mary", "jane", "9-8-2000");
+//GREETING
+Person.prototype.greeting = function () {
+  return `Hello There ${this.firstName} ${this.lastName}`;
+};
 
-console.log(mary.calculateAge());
-console.log(mary.getFullName());
+const person1 = new Person("John", "Doe");
 
-mary.getsMarried('smith')
-console.log(mary.getFullName());
+// console.log(person1.greeting())
+
+//customer
+
+function Customer(firstName, lastName, phone, membership) {
+  Person.call(this, firstName, lastName);
+
+  this.phone = phone;
+  this.membership = membership;
+}
+
+//inherit the person prototype method
+Customer.prototype = Object.create(Person.prototype);
+
+//make customer.prototype return customer
+Customer.prototype.constructor = Customer;
+
+//create a customer
+const customer1 = new Customer("Tom", "Smith", "555-555-5555", "Gold");
+
+console.log(customer1);
+
+//customer greeting
+Customer.prototype.greeting = function () {
+  return `Hello There ${this.firstName} ${this.lastName} welcome to our company`;
+};
+
+console.log(customer1.greeting());
