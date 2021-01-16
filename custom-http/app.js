@@ -1,6 +1,11 @@
-const http = new easyHTTP
+document.getElementById('button1').addEventListener('click', getText)
 
-// Get posts 
-http.get('https://jsonplaceholder.typicode.com/posts', function(response) {
-    console.log(response)
-})
+function getText() {
+    fetch('test.txt')
+        .then(function(res){
+            return res.text()
+        })
+        .then(function(data){
+            console.log(data)
+        })
+}
